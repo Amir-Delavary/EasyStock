@@ -1,6 +1,3 @@
-from re import search
-
-
 class Node:
     def __init__(self, product_id, product_information):
         self.key = product_id
