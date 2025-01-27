@@ -34,13 +34,14 @@ def main():
             product_information = list(map(lambda x: int(x) if x.isnumeric() else x, product_information))
             product_id = int(product_id)
             add_product.add_product(product_id, product_information)
-        # elif user_input == 2:
-        #     update_inventory.
+        elif user_input == 2:
+            product_id, quantity_change = list(map(int, input("Enter product_id and quantity for changing: ").split()))
+            update_inventory.update_inventory(product_id, quantity_change)
         elif user_input == 3:
             product_id = int(input("Enter product_id: "))
             check_inventory.check_inventory(product_id)
-        # elif user_input == 4:
-        #     list_low_stock.
+        elif user_input == 4:
+            list_low_stock.low_stock_list()
         # elif user_input == 5:
         #     predict_stock_depletion.
         else:

@@ -31,6 +31,9 @@ class PriorityQueue:
                 heapq.heapify(self.queue)
                 return None
 
+    def heapify(self):
+        heapq.heapify(self.queue)
+
     def get_low_stock_products(self):
         low_stock_products = []
         for _, product_id, product_information in self.queue:

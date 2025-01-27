@@ -26,12 +26,13 @@ class HashMap:
 
         return "Product added successfully"
 
-    def update_product(self, product_id, product_information):
+    def update_product(self, product_id, quantity):
         hashed_key = self.hash_key(product_id)
         avl_tree = self.hash_map[hashed_key]
         node = avl_tree.search(avl_tree.root, product_id)
         if node:
-            node.value = product_information
+            node.value[1] += quantity
+            self.priority_queue.heapify()
             return "Product information updated"
         return "product_id not found"
 
