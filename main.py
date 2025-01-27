@@ -42,8 +42,9 @@ def main():
             check_inventory.check_inventory(product_id)
         elif user_input == 4:
             list_low_stock.low_stock_list()
-        # elif user_input == 5:
-        #     predict_stock_depletion.
+        elif user_input == 5:
+            product_id = int(input("Enter product_id: "))
+            predict_stock_depletion.predict_inventory(product_id)
         else:
             print("Wrong option selected!")
             main_menu()

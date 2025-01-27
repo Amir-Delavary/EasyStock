@@ -56,5 +56,15 @@ class HashMap:
         self.priority_queue.remove(product_id)
         return "product deleted"
 
+    def get_predict_stock_depletion(self, product_id):
+        hashed_key = self.hash_key(product_id)
+        avl_tree = self.hash_map[hashed_key]
+        node = avl_tree.search(avl_tree.root, product_id)
+        if node:
+            name, quantity, min_quantity, daily_sales = node.value
+            predict = quantity // daily_sales
+            return True, predict
+        return False, "product not found"
+
     def get_low_stock_products(self):
         return self.priority_queue.get_low_stock_products()
