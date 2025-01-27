@@ -13,7 +13,7 @@ def main_menu():
     print("[3] check_inventory")
     print("[4] List low stock")
     print("[5] Predict stock depletion")
-    user_input = input("Select an option: ")
+    user_input = int(input("Select an option: "))
     return user_input
 
 
@@ -25,21 +25,28 @@ def main():
     check_inventory = CheckInventory(inventory)
     list_low_stock = LowStockList(inventory)
     predict_stock_depletion = PredictInventory(inventory)
-    if user_input == 0:
-        return
-    elif user_input == 1:
-        add_product.add_product()
-    elif user_input == 2:
-        update_inventory.
-    elif user_input == 3:
-        check_inventory.
-    elif user_input == 4:
-        list_low_stock.
-    elif user_input == 5:
-        predict_stock_depletion.
-    else:
-        print("Wrong option selected!")
-        main_menu()
+    while True:
+        if user_input == 0:
+            return
+        elif user_input == 1:
+            product_id, *product_information = input("Enter product_info(Product_id, name, quantity, min_quantity,"
+                                                     " daily_sales): ").split()
+            product_information = list(map(lambda x: int(x) if x.isnumeric() else x, product_information))
+            product_id = int(product_id)
+            add_product.add_product(product_id, product_information)
+        # elif user_input == 2:
+        #     update_inventory.
+        elif user_input == 3:
+            product_id = int(input("Enter product_id: "))
+            check_inventory.check_inventory(product_id)
+        # elif user_input == 4:
+        #     list_low_stock.
+        # elif user_input == 5:
+        #     predict_stock_depletion.
+        else:
+            print("Wrong option selected!")
+            main_menu()
+        user_input = main_menu()
 
 
 if __name__ == "__main__":

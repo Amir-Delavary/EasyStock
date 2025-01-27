@@ -22,7 +22,6 @@ class HashMap:
             return "This product_id has already been used. Please try with another id"
 
         avl_tree.root = avl_tree.insert(avl_tree.root, product_id, product_information)
-
         self.priority_queue.push(product_id, product_information)
 
         return "Product added successfully"

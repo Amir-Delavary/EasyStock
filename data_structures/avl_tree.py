@@ -27,7 +27,7 @@ def right_rotation(node):
 
     # Update heights
     node.height = 1 + max(get_height(node.right), get_height(node.left))
-    new_root = 1 + max(get_height(new_root.right), get_height(new_root.left))
+    new_root.height = 1 + max(get_height(new_root.right), get_height(new_root.left))
     return new_root
 
 
