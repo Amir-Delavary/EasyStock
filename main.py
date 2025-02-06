@@ -20,11 +20,11 @@ def main_menu():
 def main():
     user_input = main_menu()
     inventory = HashMap()
-    add_product = AddProduct(inventory)
-    update_inventory = UpdateInventory(inventory)
-    check_inventory = CheckInventory(inventory)
-    list_low_stock = LowStockList(inventory)
-    predict_stock_depletion = PredictInventory(inventory)
+    add = AddProduct(inventory)
+    update = UpdateInventory(inventory)
+    check = CheckInventory(inventory)
+    low_stock = LowStockList(inventory)
+    predict_stock = PredictInventory(inventory)
     while True:
         if user_input == 0:
             return
@@ -33,22 +33,23 @@ def main():
                                                      " daily_sales): ").split()
             product_information = list(map(lambda x: int(x) if x.isnumeric() else x, product_information))
             product_id = int(product_id)
-            add_product.add_product(product_id, product_information)
+            add.add_product(product_id, product_information)
         elif user_input == 2:
             product_id, quantity_change = list(map(int, input("Enter product_id and quantity for changing: ").split()))
-            update_inventory.update_inventory(product_id, quantity_change)
+            update.update_inventory(product_id, quantity_change)
         elif user_input == 3:
             product_id = int(input("Enter product_id: "))
-            check_inventory.check_inventory(product_id)
+            check.check_inventory(product_id)
         elif user_input == 4:
-            list_low_stock.low_stock_list()
+            low_stock.low_stock_list()
         elif user_input == 5:
             product_id = int(input("Enter product_id: "))
-            predict_stock_depletion.predict_inventory(product_id)
+            predict_stock.predict_inventory(product_id)
         else:
             print("Wrong option selected!")
             main_menu()
         user_input = main_menu()
+        print("-"*30)
 
 
 if __name__ == "__main__":

@@ -19,12 +19,12 @@ class HashMap:
         avl_tree = self.hash_map[hashed_key]
         existing_node = avl_tree.search(avl_tree.root, product_id)
         if existing_node:
-            return "This product_id has already been used. Please try with another id"
+            return "This product ID already has been used."
 
         avl_tree.root = avl_tree.insert(avl_tree.root, product_id, product_information)
         self.priority_queue.push(product_id, product_information)
 
-        return "Product added successfully"
+        return "Product added successfully!"
 
     def update_product(self, product_id, quantity):
         hashed_key = self.hash_key(product_id)
@@ -33,8 +33,8 @@ class HashMap:
         if node:
             node.value[1] += quantity
             self.priority_queue.heapify()
-            return "Product information updated"
-        return "product_id not found"
+            return "Product quantity update successfully!"
+        return "Product with this ID not found"
 
     def get_product_information(self, product_id):
         hashed_key = self.hash_key(product_id)
